@@ -1,0 +1,8 @@
+name: python_pkgs
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - pandas=1.4.1
+  - numpy=1.22.3

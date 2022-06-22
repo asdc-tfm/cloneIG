@@ -1,0 +1,9 @@
+name: fishplot
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+  - bioconductor-timescape=1.16.0
+  - r-rcolorbrewer=1.1.2

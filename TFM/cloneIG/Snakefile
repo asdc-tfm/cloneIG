@@ -1,0 +1,59 @@
+import pandas as pd
+import numpy as np
+from snakemake.utils import validate
+import os
+
+configfile: "config.yaml"
+validate(config, schema = "schemas/config.schema.yaml")
+
+OUTDIR = config["outdir"]
+LOGDIR = config["logdir"]
+
+ABS_PATH = os.getcwd() #obtain complete path
+
+#get resources from config
+def get_resource(rule, resource) -> int:
+    try:
+        return config["resources"][rule][resource]
+    except KeyError:
+        print(
+        f"Failed to resolve resource for {rule}/{resource}: using default parameters"
+        )
+        return config["resources"]["default"][resource]
+
+
+## LOAD SAMPLES TABLE ##
+samples = pd.read_table(config["samples"], sep = ";", dtype=str).set_index(
+    ["Patient", "Condition"], drop = False)
+    
+samples.index = samples.index.set_levels(
+    [i.astype(str) for i in samples.index.levels])
+
+#structure control of samples csv file
+validate(samples, schema = "schemas/samples.schema.yaml")
+
+## LOAD RULES ##
+include: "rules/mixcr.smk"
+include: "rules/vidjil.smk"
+include: "rules/merge.smk"
+
+#ask for finla output 
+def get_final_output():
+
+    final_output = []
+
+    #MiXCR fish plots
+    final_output += expand(f"{OUTDIR}/merge/{{patient}}/{{patient}}_mixcr.html",
+    patient = samples['Patient'])
+    
+    #Vidjil fish plots
+    final_output +=expand(f"{OUTDIR}/merge/{{patient}}/{{patient}}_vidjil.html",
+    patient = samples['Patient'])
+	
+    return final_output
+
+
+## TARGET RULES ##
+rule all:
+    input:
+        get_final_output(),

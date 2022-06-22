@@ -1,0 +1,25 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+
+type: object
+
+properties:
+    Patient:
+        type: string
+        description: patient identifier
+    Condition:
+        type: string
+        description: category (BM, PPC, cfDNA) or time point
+    Sample:
+        type: string
+        description: sample identifier
+    R1:
+        type: string
+        description: path to R1 FASTQ file
+    R2:
+        type: string
+        description: path to R2 FASTQ file (optional)
+
+required:
+    - Patient
+    - Condition
+    - R1

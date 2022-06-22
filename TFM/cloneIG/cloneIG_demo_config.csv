@@ -1,0 +1,4 @@
+Patient;Condition;Sample;R1;R2
+MM129;BM;MM129_BM;/home/asanchez/TFM_git/mgv031.1--TFM_ASDC/TFM/data/MM129/MM129_R1_BM.fastq.gz;/home/asanchez/TFM_git/mgv031.1--TFM_ASDC/TFM/data/MM129/MM129_R2_BM.fastq.gz
+MM129;PPC;MM129_PPC;/home/asanchez/TFM_git/mgv031.1--TFM_ASDC/TFM/data/MM129/MM129_R1_PPC.fastq.gz;/home/asanchez/TFM_git/mgv031.1--TFM_ASDC/TFM/data/MM129/MM129_R2_PPC.fastq.gz
+MM129;cfDNA;MM129_cfDNA;/home/asanchez/TFM_git/mgv031.1--TFM_ASDC/TFM/data/MM129/MM129_R1_cfDNA.fastq.gz;/home/asanchez/TFM_git/mgv031.1--TFM_ASDC/TFM/data/MM129/MM129_R2_cfDNA.fastq.gz

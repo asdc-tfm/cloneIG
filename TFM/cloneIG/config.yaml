@@ -1,0 +1,22 @@
+# path to config csv
+samples: cloneIG_demo_config.csv
+
+# path to outdir
+outdir: /mnt/Data/asanchez/projects/tfm-igs/test/results
+
+# path to logdir
+logdir: /mnt/Data/asanchez/projects/tfm-igs/test/logs
+
+resources:
+    default:
+        threads: 1
+        mem: 4096
+        walltime: 10
+    mixcr:
+        threads: 12
+        mem: 8192
+        walltime: 1440
+    vidjil:
+        threads: 1
+        mem: 8192
+        walltime: 1440
